@@ -122,6 +122,17 @@ footer .marca{font-weight:800;color:var(--ouro);font-size:1rem}
 .barra .btn{width:auto;flex:0 0 auto;padding:12px 18px;font-size:.95rem}
 body{padding-bottom:0}
 @media (max-height:620px){.hero img{max-height:165px}.hero p{font-size:.9rem;margin:4px 0 8px}}
+.linha{position:relative;margin:4px 0 18px;padding-left:22px;text-align:left}
+.linha::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:rgba(255,255,255,.25);border-radius:3px}
+.pt{position:relative;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 14px;margin-bottom:10px;font-size:.92rem}
+.pt::before{content:"";position:absolute;left:-21px;top:16px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--ouro)}
+.pt span{display:inline-block;background:var(--ouro);color:#fff;font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:99px;margin-bottom:4px}
+.pt b{display:block;color:#fff;margin-bottom:2px}
+.agora{border-color:var(--ouro);background:rgba(242,140,40,.15)}
+.agora::before{background:var(--ouro);box-shadow:0 0 0 6px rgba(242,140,40,.3);animation:pulso 1.6s infinite}
+.porque{background:#fff;color:var(--texto);border-radius:14px;padding:14px 16px;margin-bottom:18px;text-align:left}
+.porque b{display:block;color:var(--azul);margin-bottom:6px}
+.porque ul{padding-left:18px;display:grid;gap:6px;font-size:.92rem}
 </style>
 </head>
 <body>
@@ -184,12 +195,25 @@ body{padding-bottom:0}
   </div>
 </section>
 
-<!-- 4. URGÊNCIA -->
+<!-- 4. URGÊNCIA: AGORA, DEPOIS E POR QUÊ -->
 <section class="urg">
   <div class="wrap">
-    <h2>A CBS começa a ser cobrada em <strong>1º de janeiro de 2027</strong></h2>
-    <p>Já é lei e o governo confirmou o calendário. Quem se organiza agora entra no ano sabendo o que fazer com a nota, o preço e o caixa.</p>
-    <a class="btn" href="#planos">QUERO ME ORGANIZAR AGORA</a>
+    <h2>O que está acontecendo e o que vem por aí</h2>
+    <div class="linha">
+      <div class="pt rv agora"><span>AGORA</span><b>Novembro e dezembro de 2026</b>O Senado fixa a alíquota da CBS até 15/12. Quem está no Simples e escolheu pagar por fora só pode desistir até 20/12. Os sistemas de nota estão sendo atualizados.</div>
+      <div class="pt rv"><span>1º DE JANEIRO</span><b>A CBS começa a ser cobrada</b>PIS e Cofins acabam. Sua nota passa a mostrar IBS e CBS. Cliente empresa começa a olhar o crédito antes de comprar.</div>
+      <div class="pt rv"><span>FEVEREIRO</span><b>Imposto Seletivo e novos preços</b>Bebidas, cigarro e outros produtos podem chegar mais caros. Fornecedores ajustam a tabela.</div>
+      <div class="pt rv"><span>MARÇO</span><b>Nova escolha no Simples</b>Abre a janela para decidir entre pagar no DAS ou por fora a partir de julho.</div>
+    </div>
+    <div class="porque rv">
+      <b>Por que se organizar agora</b>
+      <ul>
+        <li>Quem entende antes não reajusta preço por impulso e não perde cliente.</li>
+        <li>Nota com erro em janeiro pode travar venda para empresa.</li>
+        <li>Os prazos de dezembro não voltam: depois de 20/12, a escolha do Simples fica para março.</li>
+      </ul>
+    </div>
+    <a class="btn pulsa" href="#planos">QUERO ME ORGANIZAR AGORA</a>
   </div>
 </section>
 
