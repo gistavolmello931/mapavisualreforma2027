@@ -10,7 +10,7 @@
 <meta property="og:image" content="MAPAREFORMA2027-mockup-v1.webp">
 <link rel="preload" as="image" href="MAPAREFORMA2027-mockup-v1.webp">
 <style>
-:root{--azul:#1B2A4A;--azul2:#24365c;--ouro:#F28C28;--claro:#f5f7fa;--texto:#1c2a2e;--cinza:#8a9497}
+:root{--azul:#1B2A4A;--azul2:#24365c;--ouro:#F28C28;--claro:#f5f7fa;--texto:#1c2a2e;--cinza:#5b6669}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--texto);background:var(--claro);line-height:1.5}
@@ -283,6 +283,24 @@ section:nth-of-type(even):not(.urg){background:#fff}
 .faqsec details{margin-bottom:8px}
 .faqsec summary{padding:12px 14px;font-size:.95rem}
 @media (max-height:700px){.garmini{margin-top:8px;padding:4px 8px}.garmini img{width:40px;flex-basis:40px}.garmini p{font-size:0}.garmini b{font-size:.85rem}.completo .topo img{width:90px}.hero{padding:10px 0 12px}.hero img{height:min(calc(100svh - 345px),calc(100vw - 28px))!important;min-height:150px}.hero .confia{display:none}.hero h1{font-size:1.4rem}section{padding:14px 0 72px}h2{margin-bottom:10px}.bgrade img{aspect-ratio:16/10}.ext img{flex-basis:72px;width:72px}.ext p{display:none}.carrossel{max-width:300px;margin:0 auto}.tl p{font-size:.88rem}}
+
+/* v7: acessibilidade (PageSpeed) */
+.btn{background:#C85A0A;box-shadow:0 4px 0 #8f3f05;font-size:1.15rem}
+.selo{color:#ffc58f;border-color:#ffc58f}
+.pt span,.tl summary span,.rotulo.laranja,.ext span,.completo .tag{background:#B4530A!important;color:#fff!important}
+.ext span.gratis{background:#15803d!important}
+.economiza{background:#15803d}
+.urg .sub{color:#dfe6f1}
+.casos button,.qtd button{min-height:48px}
+.pontos{gap:4px}
+.pontos button{width:24px;height:24px;background:transparent!important;position:relative}
+.pontos button::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#cfd6d8}
+.pontos button.on::after{background:var(--azul)}
+.lado p{color:inherit}
+.ruim{color:#6b1f1f}.ruim b{color:#b01c1c}
+.bom{color:#0f3d22}.bom b{color:#116632}
+.fonte{color:#5b6669}
+.basico{opacity:1;filter:grayscale(.6)}
 </style>
 </head>
 <body>
@@ -300,6 +318,7 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </header>
 
 
+<main>
 <!-- 2. POR DENTRO + COMO FUNCIONA -->
 <section>
   <div class="wrap">
@@ -509,6 +528,7 @@ section:nth-of-type(even):not(.urg){background:#fff}
   </div>
 </section>
 
+</main>
 <!-- 10. RODAPÉ -->
 <footer>
   <div class="wrap">
