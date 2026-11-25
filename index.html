@@ -301,6 +301,55 @@ section:nth-of-type(even):not(.urg){background:#fff}
 .bom{color:#0f3d22}.bom b{color:#116632}
 .fonte{color:#5b6669}
 .basico{opacity:1;filter:grayscale(.6)}
+
+/* v8: cores por tela, planos completos, rodapé, chamadas de toque */
+section:nth-of-type(even):not(.urg){background:transparent}
+.bg-azulclaro{background:linear-gradient(180deg,#eef4fc,#e2ecf9)!important}
+.bg-laranjaclaro{background:linear-gradient(180deg,#fff7ee,#ffecd8)!important}
+.bg-verdeclaro{background:linear-gradient(180deg,#f0faf3,#e1f4e7)!important}
+.bg-branco{background:#fff!important}
+.bg-planos{background:linear-gradient(180deg,#1B2A4A,#24365c)!important}
+.bg-planos h2{color:#fff}
+.urg{background:linear-gradient(180deg,#1B2A4A,#2a3f6b)!important}
+.garsec{background:radial-gradient(circle at 50% 30%,#2e4677,#1B2A4A 70%)!important}
+.plano .topo{display:flex;gap:12px;align-items:center;margin:4px 0 6px}
+.plano .topo img{width:96px;max-width:96px;margin:0;border-radius:10px}
+.plano .topo h3{margin:0}
+.plano .topo small{font-size:.78rem;color:var(--cinza)}
+.itens{list-style:none;display:grid;gap:5px;margin:10px 0 14px;font-size:.9rem}
+.itens li{display:flex;gap:8px;align-items:flex-start;line-height:1.3}
+.itens li::before{content:none!important}
+.itens em{font-style:normal;flex:0 0 20px;height:20px;border-radius:50%;color:#fff;font-size:.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.itens .ok{background:#15803d}
+.itens .x{background:#b01c1c}
+.itens .nao{color:#5f686b;text-decoration:line-through}
+.basico{display:block;opacity:1;filter:none;background:#f1f3f5;border:1px solid #d5dbe0}
+.basico .topo img{width:64px;filter:grayscale(.7)}
+.basico .preco{font-size:1.5rem;color:#4a5558}
+.basico .btn{padding:14px;font-size:.95rem;width:100%;white-space:normal}
+.completo .topo img{width:110px;max-width:110px}
+.toque{display:block;width:max-content;margin:0 auto 10px;background:#B4530A;color:#fff;font-weight:800;font-size:.85rem;padding:6px 14px;border-radius:99px;animation:quica 1.2s ease-in-out infinite}
+.toque.inline{display:inline-block;margin:0}
+.urg .toque,.bg-planos .toque{background:#fff;color:var(--azul)}
+@keyframes quica{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.chama button{animation:chama 1.6s ease-in-out infinite}
+.chama button:nth-child(2){animation-delay:.2s}.chama button:nth-child(3){animation-delay:.4s}.chama button:nth-child(4){animation-delay:.6s}.chama button:nth-child(5){animation-delay:.8s}.chama button:nth-child(6){animation-delay:1s}
+@keyframes chama{0%,100%{box-shadow:0 0 0 0 rgba(242,140,40,0)}50%{box-shadow:0 0 0 5px rgba(242,140,40,.35)}}
+.dicatoque{margin:-6px 0 12px!important;font-weight:700;color:#7a3a06!important}
+.lupa{animation:quica 1.4s ease-in-out infinite}
+footer{background:#121d35;color:#c9d3e3;padding:34px 0 96px;text-align:left}
+.fmarca{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.fmarca img{width:54px;border-radius:8px}
+.fmarca b{display:block;color:#fff;font-size:1.05rem}
+.fmarca span{font-size:.85rem}
+.fselos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+.fselos div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px;font-size:.85rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+.fselos i{font-style:normal;font-size:1.3rem}
+.ftopo{margin-bottom:20px}
+footer nav{justify-content:flex-start;gap:10px;margin:0 0 16px}
+footer nav a{background:rgba(255,255,255,.08);padding:8px 12px;border-radius:99px;text-decoration:none;font-size:.85rem}
+footer .aviso{font-size:.78rem;margin-bottom:6px}
+footer .copy{font-size:.75rem;opacity:.75}
 </style>
 </head>
 <body>
@@ -320,7 +369,7 @@ section:nth-of-type(even):not(.urg){background:#fff}
 
 <main>
 <!-- 2. POR DENTRO + COMO FUNCIONA -->
-<section>
+<section class="bg-azulclaro">
   <div class="wrap">
     <h2>Veja por dentro 👇</h2>
     <div class="carrossel" id="carrossel" aria-label="Páginas do material">
@@ -344,11 +393,12 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- 3. QUAL É O SEU CASO (interativo) -->
-<section class="casosec">
+<section class="casosec bg-laranjaclaro">
   <div class="wrap">
     <h2>Qual é o seu negócio?</h2>
     <p class="sub">Toque e veja o que muda para você</p>
-    <div class="casos" id="casos">
+    <div class="toque" id="tq1">👆 Toque no seu</div>
+    <div class="casos chama" id="casos">
       <button data-c="mei"><i>🧑‍🔧</i>MEI</button>
       <button data-c="loja"><i>🏪</i>Loja</button>
       <button data-c="servico"><i>💇</i>Salão ou serviço</button>
@@ -361,7 +411,7 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- 4. O QUE VOCÊ RESOLVE -->
-<section>
+<section class="bg-branco">
   <div class="wrap">
     <h2>Com o mapa você resolve</h2>
     <div class="tiles">
@@ -381,7 +431,7 @@ section:nth-of-type(even):not(.urg){background:#fff}
 <section class="urg">
   <div class="wrap">
     <h2>O que vem por aí ⏳</h2>
-    <p class="sub">Toque em cada data</p>
+    <p class="sub"><span class="toque inline">👆 Toque em cada data</span></p>
     <div class="tl">
       <details class="agora" open><summary><i>🔴</i><span>AGORA</span>Prazos de dezembro</summary><p>📌 Até 15/12 o Senado fixa a alíquota da CBS.<br>📌 Até 20/12 quem é do Simples e escolheu pagar por fora pode desistir.</p></details>
       <details><summary><i>🗓️</i><span>1º JAN</span>Começa a CBS</summary><p>❌ PIS e Cofins acabam.<br>🧾 A nota passa a mostrar IBS e CBS.</p></details>
@@ -393,7 +443,7 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- 6. MATERIAL PRINCIPAL -->
-<section>
+<section class="bg-azulclaro">
   <div class="wrap">
     <div class="cent"><span class="rotulo">MATERIAL PRINCIPAL</span></div>
     <h2>Mapa Visual da Reforma 2027</h2>
@@ -409,10 +459,11 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- 7. BÔNUS -->
-<section class="bonsec">
+<section class="bonsec bg-laranjaclaro">
   <div class="wrap">
     <div class="cent"><span class="rotulo">BÔNUS DO PLANO COMPLETO</span></div>
     <h2>+ 6 bônus 🎁 (1 a 3)</h2>
+    <p class="sub dicatoque">👆 Toque no cartão para ver a capa</p>
     <div class="ext bon">
       <div class="rv"><img src="MAPAREFORMA2027-b1capa-v1.webp" width="800" height="1200" alt="Bônus 1: Calculadora de Preço 2027" loading="lazy"><div><small>BÔNUS 1</small><b>🧮 Calculadora de Preço</b><p>Planilha que acha o preço certo e mostra o seu lucro</p><span class="gratis">🎁 Grátis no completo</span></div></div>
       <div class="rv"><img src="MAPAREFORMA2027-b2capa-v1.webp" width="800" height="1200" alt="Bônus 2: Calendário do Dono 2027" loading="lazy"><div><small>BÔNUS 2</small><b>📅 Calendário do Dono</b><p>20 tarefas com prazo para marcar o que já fez</p><span class="gratis">🎁 Grátis no completo</span></div></div>
@@ -421,10 +472,11 @@ section:nth-of-type(even):not(.urg){background:#fff}
   </div>
 </section>
 
-<section class="bonsec">
+<section class="bonsec bg-laranjaclaro">
   <div class="wrap">
     <div class="cent"><span class="rotulo">BÔNUS DO PLANO COMPLETO</span></div>
     <h2>Mais bônus 🎁 (4 a 6)</h2>
+    <p class="sub dicatoque">👆 Toque no cartão para ver a capa</p>
     <div class="ext bon">
       <div class="rv"><img src="MAPAREFORMA2027-b4capa-v1.webp" width="800" height="1200" alt="Bônus 4: Checklist da Nota 2027" loading="lazy"><div><small>BÔNUS 4</small><b>🧾 Checklist da Nota</b><p>O que conferir antes de emitir para não perder venda</p><span class="gratis">🎁 Grátis no completo</span></div></div>
       <div class="rv"><img src="MAPAREFORMA2027-b5capa-v1.webp" width="800" height="1200" alt="Bônus 5: Glossário do Dono" loading="lazy"><div><small>BÔNUS 5</small><b>📖 Glossário do Dono</b><p>As 20 palavras da Reforma em português simples</p><span class="gratis">🎁 Grátis no completo</span></div></div>
@@ -434,11 +486,12 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- COMPARATIVO: FAÇA A CONTA -->
-<section>
+<section class="bg-verdeclaro">
   <div class="wrap">
     <h2>Faça a conta 🧮</h2>
     <p class="sub">Quantas dúvidas você levaria a um especialista?</p>
-    <div class="qtd" id="qtd"><button data-n="1" class="on">1</button><button data-n="3">3</button><button data-n="5">5</button></div>
+    <div class="toque" id="tq2">👆 Toque e veja a conta mudar</div>
+    <div class="qtd chama" id="qtd"><button data-n="1" class="on">1</button><button data-n="3">3</button><button data-n="5">5</button></div>
     <div class="conta">
       <div class="lado ruim">
         <div class="ic">✖</div>
@@ -462,10 +515,11 @@ section:nth-of-type(even):not(.urg){background:#fff}
 
 
 <!-- EXTRAS (ORDER BUMPS) -->
-<section class="extsec">
+<section class="extsec bg-laranjaclaro">
   <div class="wrap">
     <div class="cent"><span class="rotulo laranja">OPCIONAL NO PAGAMENTO</span></div>
     <h2>Quer ir além? ➕</h2>
+    <p class="sub dicatoque">👆 Toque no cartão para ver a capa</p>
     <p class="sub">Marque na hora de pagar. R$ 9,90 cada.</p>
     <div class="ext">
       <div class="rv"><img src="MAPAREFORMA2027-bp1capa-v1.webp" width="600" height="868" alt="Extra: Quanto muda no seu preço" loading="lazy"><div><b>📊 Quanto muda no seu preço</b><p>4 casos com números e simulador DAS x por fora</p><span>+ R$ 9,90</span></div></div>
@@ -476,25 +530,21 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- 8. PLANOS -->
-<section id="planos" style="padding-top:10px">
+<section id="planos" class="bg-planos">
   <div class="wrap">
     <h2>Escolha o seu acesso</h2>
     <div class="planos">
       <div class="rv plano completo">
-        <span class="tag">⭐ RECOMENDADO</span>
+        <span class="tag">⭐ MAIS ESCOLHIDO</span>
         <div class="topo"><img src="MAPAREFORMA2027-mockup-v1.webp" width="900" height="900" alt="Mapa Visual completo com bônus" loading="lazy"><div><h3>Plano Completo</h3><div class="preco">R$ 27,90</div><small>pagamento único</small></div></div>
-        <ul class="semck duas">
-          <li>🗺️ 20 mapas</li><li>🧮 Calculadora</li>
-          <li>📅 Calendário</li><li>💵 Antes x Depois</li>
-          <li>🧾 Checklist da Nota</li><li>📖 Glossário</li>
-          <li>🏦 Split Payment</li><li>🔄 Atualizações</li>
-        </ul>
+        <ul class="itens"><li><em class="ok">✔</em>🗺️ Mapa Visual da Reforma 2027 (20 mapas)</li><li><em class="ok">✔</em>🧮 Bônus 1: Calculadora de Preço 2027</li><li><em class="ok">✔</em>📅 Bônus 2: Calendário do Dono 2027</li><li><em class="ok">✔</em>💵 Bônus 3: Antes x Depois no seu caixa</li><li><em class="ok">✔</em>🧾 Bônus 4: Checklist da Nota 2027</li><li><em class="ok">✔</em>📖 Bônus 5: Glossário do Dono</li><li><em class="ok">✔</em>🏦 Bônus 6: Split Payment e planilha de caixa</li><li><em class="ok">✔</em>🔄 Atualizações quando sair regra nova</li><li><em class="ok">✔</em>🛡️ 30 dias de garantia</li></ul>
         <a class="btn pulsa" href="checkoutteste.html?plano=completo">QUERO O PLANO COMPLETO</a>
         <div class="garmini"><img src="MAPAREFORMA2027-selo30-v1.webp" width="589" height="600" alt="30 dias de garantia" loading="lazy"><p><b>30 dias de garantia</b>Não gostou? Devolvemos 100% do valor.</p></div>
       </div>
       <div class="rv plano basico">
-        <div><h3>Plano Básico</h3><p>🗺️ Só os 20 mapas · ❌ sem bônus</p></div>
-        <div class="dir"><div class="preco">R$ 19,90</div><a class="btn" href="checkoutteste.html?plano=basico">QUERO O BÁSICO</a></div>
+        <div class="topo"><img src="MAPAREFORMA2027-capa-v1.webp" width="800" height="1200" alt="Capa do Mapa Visual" loading="lazy"><div><h3>Plano Básico</h3><div class="preco">R$ 19,90</div><small>pagamento único</small></div></div>
+        <ul class="itens"><li class="tem"><em class="ok">✔</em>🗺️ Mapa Visual da Reforma 2027 (20 mapas)</li><li class="nao"><em class="x">✖</em>🧮 Bônus 1: Calculadora de Preço 2027</li><li class="nao"><em class="x">✖</em>📅 Bônus 2: Calendário do Dono 2027</li><li class="nao"><em class="x">✖</em>💵 Bônus 3: Antes x Depois no seu caixa</li><li class="nao"><em class="x">✖</em>🧾 Bônus 4: Checklist da Nota 2027</li><li class="nao"><em class="x">✖</em>📖 Bônus 5: Glossário do Dono</li><li class="nao"><em class="x">✖</em>🏦 Bônus 6: Split Payment e planilha de caixa</li><li class="nao"><em class="x">✖</em>🔄 Atualizações quando sair regra nova</li><li class="tem"><em class="ok">✔</em>🛡️ 30 dias de garantia</li></ul>
+        <a class="btn" href="checkoutteste.html?plano=basico">QUERO SÓ O BÁSICO</a>
       </div>
     </div>
   </div>
@@ -515,9 +565,10 @@ section:nth-of-type(even):not(.urg){background:#fff}
 </section>
 
 <!-- 9. PERGUNTAS FREQUENTES -->
-<section class="faqsec">
+<section class="faqsec bg-azulclaro">
   <div class="wrap">
-    <h2>Dúvidas? Toque para ver ❓</h2>
+    <h2>Dúvidas? ❓</h2>
+    <p class="sub"><span class="toque inline">👆 Toque na pergunta</span></p>
     <details><summary>Como recebo o material?</summary><p>Logo após a confirmação do pagamento, você recebe o acesso no e-mail usado na compra.</p></details>
     <details><summary>Preciso entender de contabilidade?</summary><p>Não. Os mapas foram feitos para o dono do negócio, com exemplos de loja, salão e oficina e sem juridiquês.</p></details>
     <details><summary>Serve para quem é do Simples Nacional?</summary><p>Sim. Tem mapas só para o Simples, para o MEI, para comércio, para serviço e para quem vende para empresas.</p></details>
@@ -532,13 +583,21 @@ section:nth-of-type(even):not(.urg){background:#fff}
 <!-- 10. RODAPÉ -->
 <footer>
   <div class="wrap">
-    <div class="marca">Mapa Visual da Reforma</div>
+    <div class="fmarca"><img src="MAPAREFORMA2027-capa-v1.webp" width="800" height="1200" alt="" loading="lazy"><div><b>Mapa Visual da Reforma 2027</b><span>O que muda no imposto do seu negócio, em mapas simples.</span></div></div>
+    <div class="fselos">
+      <div><i>🔒</i>Compra segura</div>
+      <div><i>⚡</i>Acesso na hora</div>
+      <div><i>🛡️</i>Garantia de 30 dias</div>
+      <div><i>💳</i>Pix ou cartão</div>
+    </div>
+    <a class="btn ftopo" href="#planos">QUERO O MAPA VISUAL</a>
     <nav>
-      <a href="suporte.html">Suporte</a>
-      <a href="termos.html">Termos de uso</a>
-      <a href="reembolso.html">Política de reembolso</a>
+      <a href="suporte.html">💬 Suporte</a>
+      <a href="termos.html">📄 Termos de uso</a>
+      <a href="reembolso.html">↩️ Reembolso</a>
     </nav>
-    <p>Material educativo. Não tem ligação com a Receita Federal nem com o Governo Federal.</p>
+    <p class="aviso">Material educativo. Não tem ligação com a Receita Federal nem com o Governo Federal.</p>
+    <p class="copy">© 2026 Mapa Visual da Reforma. Todos os direitos reservados.</p>
   </div>
 </footer>
 
@@ -590,10 +649,10 @@ section:nth-of-type(even):not(.urg){background:#fff}
     empresa:['<p>⚠️ Seu cliente vai olhar o <b>crédito de IBS e CBS</b>.</p><p>🔀 Pode valer pagar <b>por fora do DAS</b>: a janela abre em março.</p><p>🧮 O mapa compara os dois lados.</p>']
   };
   var cs=document.getElementById('casos'),rp=document.getElementById('resp');
-  cs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(cs.children,function(x){x.classList.toggle('on',x===b)});rp.innerHTML=R[b.dataset.c][0]+'<p style="margin-top:10px"><a href="#planos" style="color:#fff;font-weight:800">👉 Quero o mapa do meu caso</a></p>';rp.classList.remove('anim');void rp.offsetWidth;rp.classList.add('anim')});
+  cs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cs.classList.remove('chama');var t1=document.getElementById('tq1');if(t1)t1.style.visibility='hidden';[].forEach.call(cs.children,function(x){x.classList.toggle('on',x===b)});rp.innerHTML=R[b.dataset.c][0]+'<p style="margin-top:10px"><a href="#planos" style="color:#fff;font-weight:800">👉 Quero o mapa do meu caso</a></p>';rp.classList.remove('anim');void rp.offsetWidth;rp.classList.add('anim')});
   var q=document.getElementById('qtd');
   function fmt(v){return 'R$ '+v.toLocaleString('pt-BR',{maximumFractionDigits:0})}
-  q.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(q.children,function(x){x.classList.toggle('on',x===b)});var n=+b.dataset.n;document.getElementById('vAdv').textContent=fmt(475*n);document.getElementById('vEco').textContent=fmt(Math.floor(475*n-27.9))});
+  q.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;q.classList.remove('chama');var t2=document.getElementById('tq2');if(t2)t2.style.visibility='hidden';[].forEach.call(q.children,function(x){x.classList.toggle('on',x===b)});var n=+b.dataset.n;document.getElementById('vAdv').textContent=fmt(475*n);document.getElementById('vEco').textContent=fmt(Math.floor(475*n-27.9))});
 })();
 </script>
 </body>
