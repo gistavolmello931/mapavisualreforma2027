@@ -133,6 +133,33 @@ body{padding-bottom:0}
 .porque{background:#fff;color:var(--texto);border-radius:14px;padding:14px 16px;margin-bottom:18px;text-align:left}
 .porque b{display:block;color:var(--azul);margin-bottom:6px}
 .porque ul{padding-left:18px;display:grid;gap:6px;font-size:.92rem}
+
+/* v3: comparativo e animações */
+.comp{align-items:stretch;margin-top:16px}
+.comp .caro{background:#eef1f4;color:#6b7680;border:1px dashed #c3cad3}
+.comp .caro b{white-space:nowrap;font-size:1.05rem;color:#8a949e;text-decoration:line-through;text-decoration-color:#d9534f;text-decoration-thickness:2px}
+.comp .nosso{background:linear-gradient(160deg,#F28C28,#e2701a);color:#fff;border:3px solid #fff;box-shadow:0 10px 26px rgba(242,140,40,.45);transform:scale(1.04);position:relative}
+.comp .nosso b{color:#fff;font-size:1.55rem}
+.comp .nosso::before{content:"MELHOR ESCOLHA";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--azul);color:#fff;font-size:.66rem;font-weight:800;padding:3px 10px;border-radius:99px;white-space:nowrap}
+@keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero img{animation:flutua 3.5s ease-in-out infinite}
+@keyframes brilho{0%{left:-60%}60%,100%{left:130%}}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:brilho 3s ease-in-out infinite}
+.basico .btn::after{display:none}
+.bonus{scroll-behavior:smooth}
+.bonus div{transition:transform .3s ease}
+.bonus div.ativo{transform:scale(1.02);border-style:solid}
+.bpts{display:flex;justify-content:center;gap:7px;margin-top:8px}
+.bpts i{width:9px;height:9px;border-radius:50%;background:#cfd6d8;display:block;transition:background .3s}
+.bpts i.on{background:var(--ouro)}
+.etapa i{transition:transform .4s}
+.etapa.rv.on i{animation:pop .6s ease}
+@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.pt.rv{transform:translateX(-24px)}
+.pt.rv.on{transform:none}
+.plano.completo .tag{animation:pulso 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.hero img,.btn::after,.plano.completo .tag{animation:none}}
 </style>
 </head>
 <body>
@@ -261,7 +288,8 @@ body{padding-bottom:0}
       <div><img src="MAPAREFORMA2027-b5capa-v1.webp" width="800" height="1200" alt="Bônus 5: Glossário do Dono" loading="lazy"><span>BÔNUS 5</span><b>Glossário do Dono</b>As 20 palavras da Reforma em português simples.</div>
       <div><img src="MAPAREFORMA2027-b6capa-v1.webp" width="800" height="1200" alt="Bônus 6: Split Payment e o seu caixa" loading="lazy"><span>BÔNUS 6</span><b>Split Payment e o seu caixa</b>Explicação em 2 páginas e planilha de controle de caixa que separa o imposto todo mês.</div>
     </div>
-    <p class="dica">Arraste para o lado para ver todos os bônus</p>
+    <div class="bpts" id="bpts"></div>
+    <p class="dica">Os bônus passam sozinhos. Arraste para ver no seu ritmo.</p>
     <h3 style="margin:22px 0 10px;text-align:center;color:var(--azul)">Extras opcionais no pagamento</h3>
     <div class="extras">
       <div>Quanto muda no seu preço: 4 casos e simulador DAS x por fora <b>R$ 9,90</b></div>
@@ -398,6 +426,17 @@ body{padding-bottom:0}
   new IntersectionObserver(function(es){vh=es[0].isIntersecting;up()}).observe(hero);
   new IntersectionObserver(function(es){vp=es[0].isIntersecting;up()},{threshold:.05}).observe(planos);
   function up(){barra.classList.toggle('on',!vh&&!vp)}
+})();
+
+(function(){
+  var b=document.querySelector('.bonus'); if(!b) return;
+  var cards=[].slice.call(b.children), pts=document.getElementById('bpts'), i=0, pausa=false, t;
+  cards.forEach(function(){var d=document.createElement('i');pts.appendChild(d)});
+  function marca(k){cards.forEach(function(c,j){c.classList.toggle('ativo',j===k)});[].forEach.call(pts.children,function(p,j){p.className=j===k?'on':''})}
+  function ir(k){i=(k+cards.length)%cards.length;var c=cards[i];b.scrollTo({left:c.offsetLeft-(b.clientWidth-c.clientWidth)/2,behavior:'smooth'});marca(i)}
+  b.addEventListener('scroll',function(){var m=b.scrollLeft+b.clientWidth/2,best=0,d=1e9;cards.forEach(function(c,j){var x=Math.abs(c.offsetLeft+c.clientWidth/2-m);if(x<d){d=x;best=j}});i=best;marca(i)},{passive:true});
+  ['pointerdown','touchstart'].forEach(function(e){b.addEventListener(e,function(){pausa=true;clearTimeout(t);t=setTimeout(function(){pausa=false},6000)},{passive:true})});
+  marca(0); setInterval(function(){if(!pausa&&b.getBoundingClientRect().top<innerHeight&&b.getBoundingClientRect().bottom>0)ir(i+1)},3000);
 })();
 </script>
 </body>
